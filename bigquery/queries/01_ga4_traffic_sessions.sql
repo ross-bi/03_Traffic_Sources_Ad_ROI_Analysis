@@ -13,4 +13,5 @@ WITH sessions AS (
   GROUP BY 1, 2, 3
 )
 SELECT * FROM sessions
-ORDER BY revenue DESC;
+ORDER BY revenue DESC
+LIMIT 20;

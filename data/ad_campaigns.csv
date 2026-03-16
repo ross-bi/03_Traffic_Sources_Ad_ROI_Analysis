@@ -1,27 +1,12 @@
-import pandas as pd
-import numpy as np
-
-np.random.seed(42)
-
-channels = ['google', 'facebook', 'email', 'organic']
-campaigns = {
-    'google':   ['Google_Brand_Search', 'Google_Shopping', 'Google_Display'],
-    'facebook': ['FB_Retargeting', 'FB_Lookalike', 'FB_Awareness'],
-    'email':    ['Email_Newsletter', 'Email_Promo', 'Email_Winback'],
-    'organic':  ['Organic_SEO', 'Organic_Social']
-}
-
-rows = []
-for channel, camp_list in campaigns.items():
-    for camp in camp_list:
-        rows.append({
-            'campaign_name': camp,
-            'channel':       channel,
-            'ad_spend':      round(np.random.uniform(500, 5000), 2),
-            'impressions':   np.random.randint(10000, 200000),
-            'clicks':        np.random.randint(500, 8000),
-        })
-
-df = pd.DataFrame(rows)
-df.to_csv('data/ad_campaigns.csv', index=False)
-print(df)
+campaign_name,channel,ad_spend,impressions,clicks
+Google_Brand_Search,google,1325.46,131958,1360
+Google_Shopping,google,3185.83,129879,4272
+Google_Display,google,949.89,147337,966
+FB_Retargeting,facebook,2001.69,97498,6731
+FB_Lookalike,facebook,592.63,26023,630
+FB_Awareness,facebook,4245.99,10769,2891
+Email_Newsletter,email,1325.32,15311,5551
+Email_Promo,email,2861.4,194779,3885
+Email_Winback,email,3253.34,140608,974
+Organic_SEO,organic,1814.65,132537,2547
+Organic_Social,organic,2552.31,133855,2306

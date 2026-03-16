@@ -45,3 +45,11 @@ logs/
 Thumbs.db
 .vscode/
 *.swp
+
+# ========================
+# env files
+# ========================
+traffic_env/
+venv/
+.env/
+env/

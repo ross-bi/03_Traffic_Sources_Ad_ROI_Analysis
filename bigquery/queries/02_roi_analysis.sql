@@ -7,6 +7,7 @@ WITH ga4_traffic AS (
     SUM(totals.transactionRevenue) / 1000000 AS revenue
   FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
   WHERE _TABLE_SUFFIX BETWEEN '20160801' AND '20170801'
+    AND trafficSource.medium IS NOT NULL
   GROUP BY 1, 2
 ),
 ad_data AS (
@@ -17,7 +18,7 @@ ad_data AS (
     impressions,
     clicks,
     ROUND(clicks / impressions * 100, 2) AS ctr_pct
-  FROM `your_project.traffic_roi.ad_campaigns`
+  FROM `ross-bi-project-03.traffic_roi.ad_campaigns`
 )
 SELECT
   g.channel,
@@ -34,5 +35,4 @@ SELECT
 FROM ga4_traffic g
 LEFT JOIN ad_data a
   ON LOWER(g.channel) = LOWER(a.channel)
-  AND LOWER(g.campaign_name) = LOWER(a.campaign_name)
 ORDER BY roi_pct DESC;
