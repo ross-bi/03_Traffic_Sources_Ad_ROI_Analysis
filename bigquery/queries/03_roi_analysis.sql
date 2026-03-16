@@ -17,7 +17,7 @@ WITH ga4_traffic AS (
     conversion_rate_pct,
     is_paid_channel,
     channel_category
-  FROM `your_project.traffic_roi.cleaned_traffic`
+  FROM `ross-bi-project-03.traffic_roi.cleaned_traffic`
 ),
 
 ad_data AS (
@@ -28,7 +28,7 @@ ad_data AS (
     impressions,
     clicks,
     ROUND(clicks / NULLIF(impressions, 0) * 100, 2) AS ctr_pct
-  FROM `your_project.traffic_roi.ad_campaigns`
+  FROM `ross-bi-project-03.traffic_roi.ad_campaigns`
 )
 
 SELECT
