@@ -4,7 +4,7 @@
 -- 執行順序：此檔案必須最先執行
 -- ============================================================
 
-CREATE OR REPLACE VIEW `your_project.traffic_roi.cleaned_traffic` AS
+CREATE OR REPLACE VIEW `ross-bi-project-03.traffic_roi.cleaned_traffic` AS
 
 WITH raw_traffic AS (
   SELECT
