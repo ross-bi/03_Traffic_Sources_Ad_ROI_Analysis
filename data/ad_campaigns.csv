@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+
+np.random.seed(42)
+
+channels = ['google', 'facebook', 'email', 'organic']
+campaigns = {
+    'google':   ['Google_Brand_Search', 'Google_Shopping', 'Google_Display'],
+    'facebook': ['FB_Retargeting', 'FB_Lookalike', 'FB_Awareness'],
+    'email':    ['Email_Newsletter', 'Email_Promo', 'Email_Winback'],
+    'organic':  ['Organic_SEO', 'Organic_Social']
+}
+
+rows = []
+for channel, camp_list in campaigns.items():
+    for camp in camp_list:
+        rows.append({
+            'campaign_name': camp,
+            'channel':       channel,
+            'ad_spend':      round(np.random.uniform(500, 5000), 2),
+            'impressions':   np.random.randint(10000, 200000),
+            'clicks':        np.random.randint(500, 8000),
+        })
+
+df = pd.DataFrame(rows)
+df.to_csv('data/ad_campaigns.csv', index=False)
+print(df)
