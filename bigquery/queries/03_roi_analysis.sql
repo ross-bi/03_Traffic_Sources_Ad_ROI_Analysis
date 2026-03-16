@@ -5,7 +5,7 @@ WITH ga4_traffic AS (
     COUNT(DISTINCT fullVisitorId)            AS sessions,
     SUM(totals.transactions)                 AS conversions,
     SUM(totals.transactionRevenue) / 1000000 AS revenue
-  FROM `bigquery-public-data.google_analytics_sample.ga_sessions_*`
+  FROM `ross-bi-project-03.traffic_roi.cleaned_traffic`
   WHERE _TABLE_SUFFIX BETWEEN '20160801' AND '20170801'
     AND trafficSource.medium IS NOT NULL
   GROUP BY 1, 2
