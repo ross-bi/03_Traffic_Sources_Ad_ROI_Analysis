@@ -72,3 +72,7 @@ This project analyzes traffic sources and advertising ROI for an e-commerce plat
 ## 🔐 Security Note
 
 GCP Service Account keys (`*.json`) and `.env` files are excluded from version control via `.gitignore`. Never commit credentials to this repository.
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
