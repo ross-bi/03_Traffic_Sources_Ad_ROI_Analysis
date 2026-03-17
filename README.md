@@ -1,6 +1,6 @@
 # 03 Traffic Sources & Ad ROI Analysis
 
-> 流量來源與廣告效益分析 | BigQuery + Power BI
+> Traffic Source and Advertising Effectiveness Analysis | BigQuery + Power BI 
 
 ---
 
