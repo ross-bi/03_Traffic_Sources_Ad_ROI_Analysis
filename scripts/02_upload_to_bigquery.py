@@ -76,18 +76,30 @@ def upload_table(client, table_name):
     table_ref = f"{PROJECT_ID}.{DATASET_ID}.{table_name}"
 
     df = pd.read_csv(csv_path)
-    print(f"  Uploading {table_name}: {len(df):,} rows...")
+
+    # ── 驗證點 1 & 2：確認 DataFrame 不是空的 ────────────────
+    print(f"\n[{table_name}] df.shape: {df.shape}")
+    print(df.head(2))
+
+    # ── 驗證點 4：印出 table_id 與 write_disposition ──────────
+    write_disp = bigquery.WriteDisposition.WRITE_TRUNCATE
+    print(f"  table_id        : {table_ref}")
+    print(f"  write_disposition: {write_disp}")
 
     job_config = bigquery.LoadJobConfig(
         schema=SCHEMAS[table_name],
-        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
-        skip_leading_rows=1,
-        source_format=bigquery.SourceFormat.CSV,
+        write_disposition=write_disp,
+        # ✗ 移除 skip_leading_rows 和 source_format
+        # ✗ 這兩個是給 load_table_from_uri 用的，不適用 DataFrame
     )
 
+    print(f"  Uploading {table_name}: {len(df):,} rows...")
     job = client.load_table_from_dataframe(df, table_ref, job_config=job_config)
     job.result()
-    print(f"  ✓ {table_name} uploaded successfully.")
+
+    # ── 驗證點 3：確認 BigQuery 端的實際 row count ────────────
+    bq_table = client.get_table(table_ref)
+    print(f"  ✓ {table_name} uploaded. BigQuery rows: {bq_table.num_rows:,}")
 
 def main():
     client = bigquery.Client(project=PROJECT_ID)
