@@ -10,7 +10,7 @@ from google.cloud.exceptions import NotFound
 import pandas as pd
 
 # ── Config — edit these ───────────────────────────────────────────────────────
-PROJECT_ID  = "your-gcp-project-id"       # ← replace
+PROJECT_ID  = "ross-bi-project-03"       # ← replace
 DATASET_ID  = "traffic_ad_roi"             # will be created if not exist
 DATA_DIR    = os.path.join(os.path.dirname(__file__), "..", "data")
 LOCATION    = "US"
