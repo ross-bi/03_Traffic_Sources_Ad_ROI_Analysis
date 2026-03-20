@@ -43,20 +43,15 @@ pip install pandas faker google-cloud-bigquery pyarrow
 python scripts/01_generate_data.py
 ```
 
-### 3. 建立 BigQuery 資料表
-```sql
--- 執行 sql/01_create_tables.sql
-```
-
-### 4. 上傳資料至 BigQuery
+### 3. 上傳資料至 BigQuery
 ```bash
 python scripts/02_upload_to_bigquery.py
 ```
 
-### 5. 執行分析 SQL
-依序執行 `sql/` 資料夾中的 02、03、04 分析腳本
+### 4. 執行清洗分析 SQL
+依序執行 `sql/` 資料夾中的 01、02、03、04 分析腳本
 
-### 6. Power BI 連接
+### 5. Power BI 連接
 參考 `powerbi/dashboard_design.md` 建立儀表板
 
 ## 專案結構
@@ -69,7 +64,7 @@ python scripts/02_upload_to_bigquery.py
 │   ├── 01_generate_data.py        # 模擬資料生成
 │   └── 02_upload_to_bigquery.py   # BigQuery 上傳
 ├── sql/
-│   ├── 01_create_tables.sql       # DDL 建表
+│   ├── 01_data_cleaning.sql       # 清洗資料
 │   ├── 02_traffic_analysis.sql    # 流量來源分析
 │   ├── 03_ctr_conversion.sql      # CTR vs 轉換率
 │   └── 04_roi_analysis.sql        # ROI 分析
@@ -88,3 +83,7 @@ python scripts/02_upload_to_bigquery.py
 ## 作者
 
 ross-bi | [GitHub](https://github.com/ross-bi)
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
