@@ -1,0 +1,12 @@
+channel,campaign_type,campaign_count,total_spend_usd,total_revenue_usd,avg_ctr_pct,avg_cvr_pct,avg_roas,avg_roi_pct,avg_cpa_usd
+Email,Automation,1,795.7,35905.54,2.726,10.587,45.12,4412.45,2.27
+Email,Newsletter,1,1400.16,39006.65,2.69,6.871,27.86,2685.87,3.74
+Email,Promotion,1,1891.41,50979.14,2.726,6.46,26.95,2595.3,3.85
+Google Ads,Shopping,1,32138.86,113801.56,4.652,4.229,3.54,254.09,26.98
+Facebook Ads,Retargeting,1,37347.95,98046.18,2.104,4.618,2.63,162.52,33.77
+Google Ads,Search,2,456797.58,982171.16,4.455,4.021,2.15,114.5,44.49
+Facebook Ads,Awareness,1,18517.02,20038.46,2.206,1.333,1.08,8.22,78.13
+Facebook Ads,Conversion,1,123353.39,128565.26,2.153,2.283,1.04,4.23,84.84
+Google Ads,Display,1,32560.57,22754.61,4.407,0.51,0.7,-30.12,132.36
+Direct,Direct,1,0.0,215525.04,0.0,6.83,,,0.0
+Organic,SEO,1,0.0,47781.29,0.0,1.929,,,0.0

@@ -1,0 +1,16 @@
+channel,device,orders,revenue_usd,avg_order_value
+Direct,Mobile,895,98307.01,109.84
+Direct,Desktop,881,95833.27,108.78
+Direct,Tablet,203,21384.76,105.34
+Email,Mobile,546,56278.3,103.07
+Email,Desktop,540,56353.98,104.36
+Email,Tablet,129,13259.05,102.78
+Facebook Ads,Mobile,1286,114409.3,88.97
+Facebook Ads,Desktop,1233,107499.96,87.19
+Facebook Ads,Tablet,278,24740.64,89.0
+Google Ads,Desktop,5316,508402.61,95.64
+Google Ads,Mobile,5258,499885.47,95.07
+Google Ads,Tablet,1158,110439.25,95.37
+Organic,Desktop,266,21974.02,82.61
+Organic,Mobile,250,21616.85,86.47
+Organic,Tablet,49,4190.42,85.52

@@ -40,7 +40,7 @@ data/*.csv
 data/*.parquet
 data/*.xlsx
 !data/.gitkeep
-data/bigquery_cache/
+
 
 # BigQuery / GCP credentials
 *.json

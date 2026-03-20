@@ -1,0 +1,11 @@
+campaign_id,campaign_name,channel,campaign_type,avg_ctr_pct,avg_session_cvr_pct,avg_click_cvr_pct,total_impressions,total_clicks,total_orders,total_revenue_usd,total_spend_usd
+C003,Google_Shopping_Q1,Google Ads,Shopping,4.626,4.203,3.876,660133,30708,1191,113801.56,32138.86
+C002,Google_Nonbrand_Search,Google Ads,Search,4.49,4.034,3.719,3835075,170798,6392,609191.64,281107.44
+C001,Google_Brand_Search,Google Ads,Search,4.445,4.031,3.722,2385002,106283,3903,372979.52,175690.14
+C004,Google_Display_Remarketing,Google Ads,Display,4.417,0.518,0.475,1182186,52099,246,22754.61,32560.57
+C010,Email_Abandoned_Cart,Email,Automation,2.714,10.121,8.606,140123,3820,350,35905.54,795.7
+C009,Email_Promo_Flash_Sale,Email,Promotion,2.711,6.505,5.801,307087,8371,491,50979.14,1891.41
+C008,Email_Newsletter_Monthly,Email,Newsletter,2.672,7.038,6.104,227582,6123,374,39006.65,1400.16
+C005,Facebook_Awareness,Facebook Ads,Awareness,2.203,1.348,1.23,876883,19347,237,20038.46,18517.02
+C006,Facebook_Conversion,Facebook Ads,Conversion,2.154,2.294,2.109,3209507,69106,1454,128565.26,123353.39
+C007,Facebook_Retargeting,Facebook Ads,Retargeting,2.13,4.524,4.139,1245040,26193,1106,98046.18,37347.95

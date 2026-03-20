@@ -1,0 +1,13 @@
+campaign_id,campaign_name,channel,campaign_type,daily_budget_usd,start_date,end_date,is_active,cleaned_at
+C002,Google_Nonbrand_Search,Google Ads,Search,800.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C007,Facebook_Retargeting,Facebook Ads,Retargeting,350.0,2024-04-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C012,Direct_Traffic,Direct,Direct,0.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C003,Google_Shopping_Q1,Google Ads,Shopping,600.0,2024-01-01,2024-03-31,false,2026-03-20 07:22:06.046320 UTC
+C009,Email_Promo_Flash_Sale,Email,Promotion,80.0,2024-02-01,2024-11-30,false,2026-03-20 07:22:06.046320 UTC
+C008,Email_Newsletter_Monthly,Email,Newsletter,50.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C010,Email_Abandoned_Cart,Email,Automation,30.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C011,Organic_Seo,Organic,SEO,0.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C006,Facebook_Conversion,Facebook Ads,Conversion,700.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C005,Facebook_Awareness,Facebook Ads,Awareness,400.0,2024-01-01,2024-06-30,false,2026-03-20 07:22:06.046320 UTC
+C001,Google_Brand_Search,Google Ads,Search,500.0,2024-01-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC
+C004,Google_Display_Remarketing,Google Ads,Display,300.0,2024-03-01,2024-12-31,false,2026-03-20 07:22:06.046320 UTC

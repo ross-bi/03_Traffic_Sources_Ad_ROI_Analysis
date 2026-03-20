@@ -1,0 +1,6 @@
+channel,total_sessions,bounced_sessions,bounce_rate,avg_duration_sec,avg_pages,total_orders,total_revenue_usd,avg_order_value_usd,total_spend_usd,conversion_rate,cost_per_acquisition,roas
+Google Ads,331749,2446,0.0074,180.3,3.06,11732,1118727.33,95.36,521497.01,0.0354,44.45,2.15
+Facebook Ads,105427,815,0.0077,180.4,3.06,2797,246649.9,88.18,179218.36,0.0265,64.08,1.38
+Direct,28975,230,0.0079,180.4,3.05,1979,215525.04,108.91,0.0,0.0683,0.0,
+Email,16350,140,0.0086,180.8,3.06,1215,125891.33,103.61,4087.27,0.0743,3.36,30.8
+Organic,29296,257,0.0088,180.2,3.04,565,47781.29,84.57,0.0,0.0193,0.0,
