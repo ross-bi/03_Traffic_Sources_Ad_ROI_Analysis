@@ -149,9 +149,7 @@ WHERE rn = 1;
 -- ─────────────────────────────────────────────────────────
 -- 2B  ad_impressions_clean
 -- ─────────────────────────────────────────────────────────
-CREATE OR REPLACE TABLE `traffic_ad_roi_clean.ad_impressions`
-PARTITION BY date
-AS
+CREATE OR REPLACE TABLE `traffic_ad_roi_clean.ad_impressions` AS
 
 WITH deduped AS (
   SELECT *,
@@ -194,9 +192,7 @@ WHERE rn = 1;
 -- ─────────────────────────────────────────────────────────
 -- 2C  sessions_clean
 -- ─────────────────────────────────────────────────────────
-CREATE OR REPLACE TABLE `traffic_ad_roi_clean.sessions`
-PARTITION BY session_date
-AS
+CREATE OR REPLACE TABLE `traffic_ad_roi_clean.sessions` AS
 
 WITH deduped AS (
   SELECT *,
@@ -251,9 +247,7 @@ WHERE rn = 1;
 -- ─────────────────────────────────────────────────────────
 -- 2D  conversions_clean
 -- ─────────────────────────────────────────────────────────
-CREATE OR REPLACE TABLE `traffic_ad_roi_clean.conversions`
-PARTITION BY order_date
-AS
+CREATE OR REPLACE TABLE `traffic_ad_roi_clean.conversions` AS
 
 WITH deduped AS (
   SELECT *,
