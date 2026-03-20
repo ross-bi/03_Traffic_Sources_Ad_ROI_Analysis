@@ -4,7 +4,7 @@
 -- ============================================================
 
 -- ── View 7: Campaign 級別 ROI 總覽 ──────────────────────────────
-CREATE OR REPLACE VIEW `traffic_ad_roi.v_campaign_roi` AS
+CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_campaign_roi` AS
 WITH campaign_spend AS (
     SELECT
         campaign_id,
@@ -12,7 +12,7 @@ WITH campaign_spend AS (
         SUM(impressions)   AS total_impressions,
         SUM(clicks)        AS total_clicks,
         ROUND(SAFE_DIVIDE(SUM(clicks), SUM(impressions)), 6) AS overall_ctr
-    FROM `traffic_ad_roi.ad_impressions`
+    FROM `traffic_ad_roi_clean.ad_impressions`
     GROUP BY campaign_id
 ),
 campaign_revenue AS (
@@ -21,7 +21,7 @@ campaign_revenue AS (
         COUNT(*)               AS total_orders,
         SUM(order_value_usd)   AS total_revenue_usd,
         AVG(order_value_usd)   AS avg_order_value
-    FROM `traffic_ad_roi.conversions`
+    FROM `traffic_ad_roi_clean.conversions`
     GROUP BY campaign_id
 ),
 campaign_sessions AS (
@@ -29,7 +29,7 @@ campaign_sessions AS (
         campaign_id,
         COUNT(*)                        AS total_sessions,
         COUNTIF(is_bounce = 0)          AS engaged_sessions
-    FROM `traffic_ad_roi.sessions`
+    FROM `traffic_ad_roi_clean.sessions`
     GROUP BY campaign_id
 )
 SELECT
@@ -81,7 +81,7 @@ SELECT
         NULLIF(COALESCE(sp.total_spend_usd, 0), 0)
     ) * 100, 2) AS roi_pct
 
-FROM `traffic_ad_roi.campaigns` c
+FROM `traffic_ad_roi_clean.campaigns` c
 LEFT JOIN campaign_spend   sp ON c.campaign_id = sp.campaign_id
 LEFT JOIN campaign_revenue rv ON c.campaign_id = rv.campaign_id
 LEFT JOIN campaign_sessions se ON c.campaign_id = se.campaign_id
@@ -89,14 +89,14 @@ ORDER BY roi_pct DESC NULLS LAST;
 
 
 -- ── View 8: 月度 ROI 趨勢（付費渠道）────────────────────────────
-CREATE OR REPLACE VIEW `traffic_ad_roi.v_monthly_roi_trend` AS
+CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_monthly_roi_trend` AS
 WITH monthly_spend AS (
     SELECT
         c.channel,
         FORMAT_DATE('%Y-%m', ai.date) AS year_month,
         SUM(ai.spend_usd)             AS spend_usd
-    FROM `traffic_ad_roi.ad_impressions` ai
-    JOIN `traffic_ad_roi.campaigns` c USING (campaign_id)
+    FROM `traffic_ad_roi_clean.ad_impressions` ai
+    JOIN `traffic_ad_roi_clean.campaigns` c USING (campaign_id)
     WHERE c.channel NOT IN ('Organic', 'Direct')
     GROUP BY c.channel, year_month
 ),
@@ -105,7 +105,7 @@ monthly_revenue AS (
         channel,
         FORMAT_DATE('%Y-%m', order_date) AS year_month,
         SUM(order_value_usd)             AS revenue_usd
-    FROM `traffic_ad_roi.conversions`
+    FROM `traffic_ad_roi_clean.conversions`
     WHERE channel NOT IN ('Organic', 'Direct')
     GROUP BY channel, year_month
 )
@@ -126,7 +126,7 @@ ORDER BY ms.year_month, ms.channel;
 
 
 -- ── View 9: Campaign Type ROI 比較 ──────────────────────────────
-CREATE OR REPLACE VIEW `traffic_ad_roi.v_campaign_type_roi` AS
+CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_campaign_type_roi` AS
 SELECT
     channel,
     campaign_type,
@@ -138,6 +138,6 @@ SELECT
     ROUND(AVG(roas), 2)                 AS avg_roas,
     ROUND(AVG(roi_pct), 2)              AS avg_roi_pct,
     ROUND(AVG(cost_per_acquisition), 2) AS avg_cpa_usd
-FROM `traffic_ad_roi.v_campaign_roi`
+FROM `traffic_ad_roi_clean.v_campaign_roi`
 GROUP BY channel, campaign_type
 ORDER BY avg_roi_pct DESC;

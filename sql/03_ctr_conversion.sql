@@ -4,7 +4,7 @@
 -- ============================================================
 
 -- ── View 4: Campaign 日級別 CTR vs 轉換率 ───────────────────────
-CREATE OR REPLACE VIEW `traffic_ad_roi.v_campaign_daily_ctr_cvr` AS
+CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_campaign_daily_ctr_cvr` AS
 WITH daily_impressions AS (
     SELECT
         campaign_id,
@@ -13,7 +13,7 @@ WITH daily_impressions AS (
         clicks,
         ctr,
         spend_usd
-    FROM `traffic_ad_roi.ad_impressions`
+    FROM `traffic_ad_roi_clean.ad_impressions`
     WHERE clicks > 0
 ),
 daily_sessions AS (
@@ -21,7 +21,7 @@ daily_sessions AS (
         campaign_id,
         session_date AS date,
         COUNT(*)     AS sessions
-    FROM `traffic_ad_roi.sessions`
+    FROM `traffic_ad_roi_clean.sessions`
     GROUP BY campaign_id, session_date
 ),
 daily_conversions AS (
@@ -30,7 +30,7 @@ daily_conversions AS (
         order_date AS date,
         COUNT(*)                       AS orders,
         SUM(order_value_usd)           AS revenue_usd
-    FROM `traffic_ad_roi.conversions`
+    FROM `traffic_ad_roi_clean.conversions`
     GROUP BY campaign_id, order_date
 )
 SELECT
@@ -51,14 +51,14 @@ SELECT
     -- Click CVR = orders / clicks
     ROUND(SAFE_DIVIDE(COALESCE(dc.orders, 0), di.clicks), 6)              AS click_cvr
 FROM daily_impressions di
-JOIN `traffic_ad_roi.campaigns` c USING (campaign_id)
+JOIN `traffic_ad_roi_clean.campaigns` c USING (campaign_id)
 LEFT JOIN daily_sessions ds      ON di.campaign_id = ds.campaign_id AND di.date = ds.date
 LEFT JOIN daily_conversions dc   ON di.campaign_id = dc.campaign_id AND di.date = dc.date
 ORDER BY di.date, di.campaign_id;
 
 
 -- ── View 5: CTR 分層分析（Bucket Analysis）──────────────────────
-CREATE OR REPLACE VIEW `traffic_ad_roi.v_ctr_bucket_analysis` AS
+CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_ctr_bucket_analysis` AS
 WITH bucketed AS (
     SELECT
         *,
@@ -70,7 +70,7 @@ WITH bucketed AS (
             WHEN ctr < 0.05  THEN '05_CTR 4-5%'
             ELSE                  '06_CTR >= 5%'
         END AS ctr_bucket
-    FROM `traffic_ad_roi.v_campaign_daily_ctr_cvr`
+    FROM `traffic_ad_roi_clean.v_campaign_daily_ctr_cvr`
     WHERE clicks > 0
 )
 SELECT
@@ -88,7 +88,7 @@ ORDER BY ctr_bucket;
 
 
 -- ── View 6: Campaign 匯總 CTR & CVR 散點圖資料 ──────────────────
-CREATE OR REPLACE VIEW `traffic_ad_roi.v_campaign_ctr_cvr_scatter` AS
+CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_campaign_ctr_cvr_scatter` AS
 SELECT
     campaign_id,
     campaign_name,
@@ -102,6 +102,6 @@ SELECT
     SUM(orders)                       AS total_orders,
     ROUND(SUM(revenue_usd), 2)        AS total_revenue_usd,
     ROUND(SUM(spend_usd), 2)          AS total_spend_usd
-FROM `traffic_ad_roi.v_campaign_daily_ctr_cvr`
+FROM `traffic_ad_roi_clean.v_campaign_daily_ctr_cvr`
 GROUP BY campaign_id, campaign_name, channel, campaign_type
 ORDER BY avg_ctr_pct DESC;
