@@ -11,7 +11,7 @@ WITH daily_impressions AS (
         date,
         impressions,
         clicks,
-        ctr,
+        ctr_calculated AS ctr,
         spend_usd
     FROM `traffic_ad_roi_clean.ad_impressions`
     WHERE clicks > 0

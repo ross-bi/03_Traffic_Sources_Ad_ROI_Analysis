@@ -37,7 +37,7 @@ SELECT
     c.campaign_name,
     c.channel,
     c.campaign_type,
-    c.daily_budget,
+    c.daily_budget_usd  AS daily_budget, 
     DATE_DIFF(LEAST(c.end_date, DATE '2024-12-31'), c.start_date, DAY) + 1 AS campaign_days,
 
     -- Spend & Traffic
