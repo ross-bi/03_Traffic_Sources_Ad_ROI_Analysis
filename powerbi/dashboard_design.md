@@ -49,6 +49,8 @@
 | CTR × CVR 散點圖 | Scatter Chart | v_campaign_ctr_cvr_scatter | X=avg_ctr_pct, Y=avg_session_cvr_pct, Size=total_orders, Color=channel |
 | Campaign 詳細表格 | Table | v_campaign_ctr_cvr_scatter | campaign_name, channel, avg_ctr_pct, avg_session_cvr_pct, total_orders |
 | CTR Bucket 收益 | Bar | v_ctr_bucket_analysis | ctr_bucket vs total_revenue_usd |
+| CTR × CVR 雙軸折線圖 | Line and Clustered Column Chart 或 Dual-axis Line Chart | v_campaign_daily_ctr_cvr | x=date, y1=avg_ctr_pct, y2=avg_session_cvr_pct |
+
 
 **Slicers**：channel、campaign_type
 
