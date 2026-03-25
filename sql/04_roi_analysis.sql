@@ -105,11 +105,11 @@ monthly_revenue AS (
     SELECT
         con.channel,
         c.campaign_type,
-        FORMAT_DATE('%Y-%m', order_date) AS year_month,
-        SUM(order_value_usd)             AS revenue_usd
+        FORMAT_DATE('%Y-%m', con.order_date) AS year_month,
+        SUM(con.order_value_usd)             AS revenue_usd
     FROM `traffic_ad_roi_clean.conversions` con
     JOIN `traffic_ad_roi_clean.campaigns` c USING (campaign_id)
-    WHERE channel NOT IN ('Organic', 'Direct')
+    WHERE con.channel NOT IN ('Organic', 'Direct')  -- ← 加 con. 前綴
     GROUP BY con.channel, c.campaign_type, year_month
 )
 SELECT
