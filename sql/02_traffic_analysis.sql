@@ -7,7 +7,7 @@
 CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_channel_performance` AS
 WITH session_stats AS (
     SELECT
-        channel,
+        s.channel,
         c.campaign_type,
         COUNT(*)                                           AS total_sessions,
         COUNTIF(is_bounce = 1)                             AS bounced_sessions,
