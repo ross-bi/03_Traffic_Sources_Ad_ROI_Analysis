@@ -45,11 +45,11 @@
 
 | 區塊 | 視覺化類型 | 資料來源 | 欄位 |
 |------|-----------|---------|------|
-| CTR Bucket 柱狀圖 | Clustered Column | v_ctr_bucket_analysis | ctr_bucket vs avg_session_cvr_pct |
-| CTR × CVR 散點圖 | Scatter Chart | v_campaign_ctr_cvr_scatter | X=avg_ctr_pct, Y=avg_session_cvr_pct, Size=total_orders, Color=channel |
-| Campaign 詳細表格 | Table | v_campaign_ctr_cvr_scatter | campaign_name, channel, avg_ctr_pct, avg_session_cvr_pct, total_orders |
+| CTR Bucket 柱狀圖 | Clustered Column | v_ctr_bucket_analysis | ctr_bucket vs avg_session_cvr |
+| CTR × CVR 散點圖 | Scatter Chart | v_campaign_ctr_cvr_scatter | X=avg_ctr, Y=avg_session_cvr, Size=total_orders, Color=channel |
+| Campaign 詳細表格 | Table | v_campaign_ctr_cvr_scatter | campaign_name, channel, avg_ctr, avg_session_cvr, total_orders |
 | CTR Bucket 收益 | Bar | v_ctr_bucket_analysis | ctr_bucket vs total_revenue_usd |
-| CTR × CVR 雙軸折線圖 | Line and Clustered Column Chart 或 Dual-axis Line Chart | v_campaign_daily_ctr_cvr | x=date, y1=avg_ctr_pct, y2=avg_session_cvr_pct |
+| CTR × CVR 雙軸折線圖 | Line and Clustered Column Chart 或 Dual-axis Line Chart | v_campaign_daily_ctr_cvr | x=date, y1=avg_ctr, y2=avg_session_cvr |
 
 
 **Slicers**：channel、campaign_type
@@ -57,8 +57,8 @@
 **DAX Measures**：
 ```dax
 Correlation Label = 
-VAR avgCTR = AVERAGE(v_campaign_ctr_cvr_scatter[avg_ctr_pct])
-VAR avgCVR = AVERAGE(v_campaign_ctr_cvr_scatter[avg_session_cvr_pct])
+VAR avgCTR = AVERAGE(v_campaign_ctr_cvr_scatter[avg_ctr])
+VAR avgCVR = AVERAGE(v_campaign_ctr_cvr_scatter[avg_session_cvr])
 RETURN "Avg CTR: " & FORMAT(avgCTR, "0.00") & "% | Avg CVR: " & FORMAT(avgCVR, "0.00") & "%"
 ```
 
@@ -71,13 +71,13 @@ RETURN "Avg CTR: " & FORMAT(avgCTR, "0.00") & "% | Avg CVR: " & FORMAT(avgCVR, "
 | 區塊 | 視覺化類型 | 資料來源 | 欄位 |
 |------|-----------|---------|------|
 | KPI Cards | Card × 4 | v_campaign_roi | Best ROAS campaign, Avg ROI%, Total Revenue, Total Spend |
-| Campaign ROI 排名 | Horizontal Bar | v_campaign_roi | campaign_name vs roi_pct（條件格式：負值紅色）|
+| Campaign ROI 排名 | Horizontal Bar | v_campaign_roi | campaign_name vs roi（條件格式：負值紅色）|
 | ROAS vs Spend 散點圖 | Scatter | v_campaign_roi | X=total_spend_usd, Y=roas, Size=total_orders, Color=channel |
-| Campaign Type 比較 | Matrix | v_campaign_type_roi | channel × campaign_type vs avg_roi_pct, avg_cpa_usd |
-| 月度 ROI 趨勢 | Line Chart | v_monthly_roi_trend | year_month vs roi_pct，channel = Legend |
+| Campaign Type 比較 | Matrix | v_campaign_type_roi | channel × campaign_type vs avg_roi, avg_cpa_usd |
+| 月度 ROI 趨勢 | Line Chart | v_monthly_roi_trend | year_month vs roi，channel = Legend |
 | CPA 比較 | Bar | v_campaign_roi | campaign_name vs cost_per_acquisition |
 
-**Slicers**：channel、campaign_type、roi_pct（> 0 filter toggle）
+**Slicers**：channel、campaign_type、roi（> 0 filter toggle）
 
 **DAX Measures**：
 ```dax
@@ -89,7 +89,7 @@ IF(
 )
 
 ROI Traffic Light = 
-VAR roi = SELECTEDVALUE(v_campaign_roi[roi_pct])
+VAR roi = SELECTEDVALUE(v_campaign_roi[roi])
 RETURN
     IF(roi >= 100, "🟢 High",
     IF(roi >= 0,   "🟡 Positive",

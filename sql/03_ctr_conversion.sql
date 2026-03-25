@@ -74,16 +74,18 @@ WITH bucketed AS (
     WHERE clicks > 0
 )
 SELECT
+    channel,                                         
+    campaign_type,                                   
     ctr_bucket,
     COUNT(*)                          AS record_count,
-    ROUND(AVG(ctr) * 100, 2)          AS avg_ctr_pct,
-    ROUND(AVG(session_cvr) * 100, 2)  AS avg_session_cvr_pct,
-    ROUND(AVG(click_cvr) * 100, 2)    AS avg_click_cvr_pct,
+    ROUND(AVG(ctr), 2)          AS avg_ctr,
+    ROUND(AVG(session_cvr), 2)  AS avg_session_cvr,
+    ROUND(AVG(click_cvr), 2)    AS avg_click_cvr,
     ROUND(SUM(orders), 0)             AS total_orders,
     ROUND(SUM(revenue_usd), 2)        AS total_revenue_usd,
     ROUND(AVG(spend_usd), 2)          AS avg_daily_spend_usd
 FROM bucketed
-GROUP BY ctr_bucket
+GROUP BY channel, campaign_type, ctr_bucket  
 ORDER BY ctr_bucket;
 
 
@@ -94,9 +96,9 @@ SELECT
     campaign_name,
     channel,
     campaign_type,
-    ROUND(AVG(ctr) * 100, 3)          AS avg_ctr_pct,
-    ROUND(AVG(session_cvr) * 100, 3)  AS avg_session_cvr_pct,
-    ROUND(AVG(click_cvr) * 100, 3)    AS avg_click_cvr_pct,
+    ROUND(AVG(ctr), 3)          AS avg_ctr,
+    ROUND(AVG(session_cvr), 3)  AS avg_session_cvr,
+    ROUND(AVG(click_cvr), 3)    AS avg_click_cvr,
     SUM(impressions)                  AS total_impressions,
     SUM(clicks)                       AS total_clicks,
     SUM(orders)                       AS total_orders,
@@ -104,4 +106,4 @@ SELECT
     ROUND(SUM(spend_usd), 2)          AS total_spend_usd
 FROM `traffic_ad_roi_clean.v_campaign_daily_ctr_cvr`
 GROUP BY campaign_id, campaign_name, channel, campaign_type
-ORDER BY avg_ctr_pct DESC;
+ORDER BY avg_ctr DESC;

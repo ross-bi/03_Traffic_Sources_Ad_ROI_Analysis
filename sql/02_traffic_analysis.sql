@@ -8,17 +8,20 @@ CREATE OR REPLACE VIEW `traffic_ad_roi_clean.v_channel_performance` AS
 WITH session_stats AS (
     SELECT
         channel,
+        c.campaign_type,
         COUNT(*)                                           AS total_sessions,
         COUNTIF(is_bounce = 1)                             AS bounced_sessions,
         ROUND(COUNTIF(is_bounce = 1) / COUNT(*), 4)        AS bounce_rate,
         ROUND(AVG(session_duration_sec), 1)                AS avg_duration_sec,
         ROUND(AVG(pages_viewed), 2)                        AS avg_pages
-    FROM `traffic_ad_roi_clean.sessions`
-    GROUP BY channel
+    FROM `traffic_ad_roi_clean.sessions` s
+    JOIN `traffic_ad_roi_clean.campaigns` c USING (campaign_id)
+    GROUP BY s.channel, c.campaign_type
 ),
 conversion_stats AS (
     SELECT
         channel,
+        s.campaign_type,
         COUNT(*)                                           AS total_orders,
         ROUND(SUM(order_value_usd), 2)                     AS total_revenue_usd,
         ROUND(AVG(order_value_usd), 2)                     AS avg_order_value_usd
