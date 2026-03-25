@@ -20,24 +20,27 @@ WITH session_stats AS (
 ),
 conversion_stats AS (
     SELECT
-        channel,
-        s.campaign_type,
-        COUNT(*)                                           AS total_orders,
-        ROUND(SUM(order_value_usd), 2)                     AS total_revenue_usd,
-        ROUND(AVG(order_value_usd), 2)                     AS avg_order_value_usd
-    FROM `traffic_ad_roi_clean.conversions`
-    GROUP BY channel
+        con.channel,
+        c.campaign_type,
+        COUNT(*)                       AS total_orders,
+        ROUND(SUM(con.order_value_usd), 2) AS total_revenue_usd,
+        ROUND(AVG(con.order_value_usd), 2)  AS avg_order_value_usd
+    FROM `traffic_ad_roi_clean.conversions` con
+    JOIN `traffic_ad_roi_clean.campaigns` c USING (campaign_id)
+    GROUP BY con.channel, c.campaign_type
 ),
 spend_stats AS (
     SELECT
         c.channel,
-        ROUND(SUM(ai.spend_usd), 2)                        AS total_spend_usd
+        c.campaign_type,
+        ROUND(SUM(ai.spend_usd), 2) AS total_spend_usd
     FROM `traffic_ad_roi_clean.ad_impressions` ai
     JOIN `traffic_ad_roi_clean.campaigns` c USING (campaign_id)
-    GROUP BY c.channel
+    GROUP BY c.channel, c.campaign_type
 )
 SELECT
     s.channel,
+    s.campaign_type,
     s.total_sessions,
     s.bounced_sessions,
     s.bounce_rate,
@@ -55,7 +58,9 @@ SELECT
     ROUND(SAFE_DIVIDE(COALESCE(cv.total_revenue_usd, 0), COALESCE(sp.total_spend_usd, 0)), 2) AS roas
 FROM session_stats s
 LEFT JOIN conversion_stats cv ON s.channel = cv.channel
+    AND s.campaign_type = cv.campaign_type
 LEFT JOIN spend_stats sp      ON s.channel = sp.channel
+    AND s.campaign_type = sp.campaign_type
 ORDER BY total_orders DESC;
 
 
