@@ -10,18 +10,7 @@ GROUP BY channel
 ORDER BY channel;
 
 
--- 2. 跨表確認：所有表的 channel 值是否一致
-SELECT 'campaigns'              AS source, channel FROM `ross-bi-project-03.traffic_ad_roi_clean.campaigns`
-UNION DISTINCT
-SELECT 'conversions',             channel FROM `ross-bi-project-03.traffic_ad_roi_clean.conversions`
-UNION DISTINCT
-SELECT 'sessions',                channel FROM `ross-bi-project-03.traffic_ad_roi_clean.sessions`
-UNION DISTINCT
-SELECT 'v_channel_performance',   channel FROM `ross-bi-project-03.traffic_ad_roi_clean.v_channel_performance`
-ORDER BY channel;
-
-
--- 3. 找出各表有但 campaigns 沒有的 channel（孤兒值）
+-- 2. 找出各表有但 campaigns 沒有的 channel（孤兒值）
 SELECT 'conversions' AS source, channel
 FROM `ross-bi-project-03.traffic_ad_roi_clean.conversions`
 WHERE channel NOT IN (SELECT DISTINCT channel FROM `ross-bi-project-03.traffic_ad_roi_clean.campaigns`)
