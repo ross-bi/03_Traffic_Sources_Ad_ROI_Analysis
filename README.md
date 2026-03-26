@@ -74,11 +74,9 @@ python scripts/02_upload_to_bigquery.py
     └── data_dictionary.md         # 資料字典
 ```
 
-## 主要發現（範例）
+## 主要發現
 
-- Google Ads 帶來最高轉換量，但 Email 的轉換率最高
-- CTR > 3% 的廣告活動平均訂單轉換率高出 2.1 倍
-- ROI 最高的活動集中在再行銷（Remarketing）類型
+
 
 ## 作者
 
