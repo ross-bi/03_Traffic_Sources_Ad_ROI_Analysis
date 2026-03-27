@@ -45,11 +45,9 @@
 
 | 區塊 | 視覺化類型 | 資料來源 | 欄位 |
 |------|-----------|---------|------|
-| CTR Bucket 柱狀圖 | Clustered Column | v_ctr_bucket_analysis | ctr_bucket vs avg_session_cvr |
 | CTR × CVR 散點圖 | Scatter Chart | v_campaign_ctr_cvr_scatter | X=avg_ctr, Y=avg_session_cvr, Size=total_orders, Color=channel |
 | Campaign 詳細表格 | Table | v_campaign_ctr_cvr_scatter | campaign_name, channel, avg_ctr, avg_session_cvr, total_orders |
-| CTR Bucket 收益 | Bar | v_ctr_bucket_analysis | ctr_bucket vs total_revenue_usd |
-| CTR × CVR 雙軸折線圖 | Line and Clustered Column Chart 或 Dual-axis Line Chart | v_campaign_daily_ctr_cvr | x=date, y1=avg_ctr, y2=avg_session_cvr |
+| CTR × CVR 折線柱狀圖 | Line and Clustered Column Chart | v_campaign_daily_ctr_cvr | x=date, y1=avg_ctr, y2=avg_session_cvr |
 
 
 **Slicers**：channel、campaign_type
@@ -76,6 +74,7 @@ RETURN "Avg CTR: " & FORMAT(avgCTR, "0.00") & "% | Avg CVR: " & FORMAT(avgCVR, "
 | Campaign Type 比較 | Matrix | v_campaign_type_roi | channel × campaign_type vs avg_roi, avg_cpa_usd |
 | 月度 ROI 趨勢 | Line Chart | v_monthly_roi_trend | year_month vs roi，channel = Legend |
 | CPA 比較 | Bar | v_campaign_roi | campaign_name vs cost_per_acquisition |
+| CTR Bucket 折線柱狀圖 | Line and Clustered Column Chart | v_ctr_bucket_analysis | ctr_bucket vs total_revenue_usd vs avg_session_cvr |
 
 **Slicers**：channel、campaign_type、roi（> 0 filter toggle）
 
