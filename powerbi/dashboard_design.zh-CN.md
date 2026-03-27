@@ -1,14 +1,14 @@
-# Power BI 儀表板設計文件
+# Power BI 仪表板设计文件
 ## Traffic Sources & Ad ROI Analysis
 
 ---
 
-## 一、連接 BigQuery
+## 一、连接 BigQuery
 
 1. Power BI Desktop → **Get Data → Google BigQuery**
 2. Project：`your-gcp-project-id`
 3. Dataset：`traffic_ad_roi_clean`
-4. 載入以下 **Views**（請勿直接載入原始資料表）：
+4. 加载以下 **Views**（请勿直接加载原始数据表）：
 
 **分析 Views：**
 - `v_channel_performance`
@@ -21,15 +21,15 @@
 - `v_monthly_roi_trend`
 - `v_campaign_type_roi`
 
-**維度表：**
+**维度表：**
 - `dim_channel`
 - `dim_campaign_type`
 
 ---
 
-## 二、資料關聯設定（Relationships）
+## 二、数据关联设定（Relationships）
 
-在 Power BI Model 檢視中手動建立以下關聯, 把9張view 分別連上2張維度表：
+在 Power BI Model 检视中手动建立以下关联, 把9张view 分别连上2张维度表：
 
 | From Table | From Column | To Table | To Column | Cardinality |
 |------------|------------|----------|-----------|-------------|
@@ -39,8 +39,7 @@
 | `v_campaign_roi` | `campaign_type` | `dim_campaign_type` | `campaign_type` | Many-to-One |
 | ... | ... | ... | ... | ... |
 
-> 維度表的 `sort_order` 欄位用於控制圖表中渠道的顯示排序。
-
+> 维度表的 `sort_order` 字段用于控制图表中渠道的显示排序。
 
 ```mermaid
 erDiagram
@@ -176,35 +175,35 @@ erDiagram
 ```
 ---
 
-## 三、儀表板結構（3 個 Report Pages）
+## 三、仪表板结构（3 个 Report Pages）
 
-### Page 1 — Channel Overview（流量來源總覽）
+### Page 1 — Channel Overview（流量来源总览）
 
-**目標**：一眼看出哪個渠道最有價值
+**目标**：一眼看出哪个渠道最有价值
 
-| 區塊 | 視覺化類型 | 資料來源 | 欄位 |
+| 区块 | 可视化类型 | 数据源 | 字段 |
 |------|-----------|---------|------|
-| KPI Cards（頂部）| Card × 5 | `v_channel_performance` | `total_orders`、`total_revenue_usd`、`total_spend_usd`、`conversion_rate`、`bounce_rate` |
-| 渠道訂單排名 | Clustered Bar | `v_channel_performance` | `channel` vs `total_orders` |
+| KPI Cards（顶部）| Card × 5 | `v_channel_performance` | `total_orders`、`total_revenue_usd`、`total_spend_usd`、`conversion_rate`、`bounce_rate` |
+| 渠道订单排名 | Clustered Bar | `v_channel_performance` | `channel` vs `total_orders` |
 | 渠道收益 vs 支出 | Clustered Column | `v_channel_performance` | `channel` vs `total_revenue_usd` + `total_spend_usd` |
-| ROAS 橫條圖 | Bar Chart | `v_channel_performance` | `channel` vs `roas`（過濾 `total_spend_usd > 0`）|
-| 月度趨勢折線圖 | Line Chart | `v_monthly_channel_trend` | `year_month` vs `revenue_usd`，`channel` 為 Legend |
-| 裝置分布 | Donut | `v_device_channel_conversion` | `device` vs `orders` |
+| ROAS 条形图 | Bar Chart | `v_channel_performance` | `channel` vs `roas`（过滤 `total_spend_usd > 0`）|
+| 月度趋势折线图 | Line Chart | `v_monthly_channel_trend` | `year_month` vs `revenue_usd`，`channel` 为 Legend |
+| 装置分布 | Donut | `v_device_channel_conversion` | `device` vs `orders` |
 
 **Slicers**：`channel`
 
 ---
 
-### Page 2 — CTR vs Conversion（點擊率與轉換分析）
+### Page 2 — CTR vs Conversion（点击率与转换分析）
 
-**目標**：驗證 CTR 與轉換率的相關性
+**目标**：验证 CTR 与转换率的相关性
 
-| 區塊 | 視覺化類型 | 資料來源 | 欄位 |
+| 区块 | 可视化类型 | 数据源 | 字段 |
 |------|-----------|---------|------|
-| CTR × CVR 散點圖 | Scatter Chart | `v_campaign_ctr_cvr_scatter` | X=`avg_ctr`，Y=`avg_session_cvr`，Size=`total_orders`，Color=`channel` |
-| Campaign 詳細表格 | Table | `v_campaign_ctr_cvr_scatter` | `campaign_name`、`channel`、`campaign_type`、`avg_ctr`、`avg_session_cvr`、`total_orders`、`total_revenue_usd` |
-| 每日 CTR & CVR 折線柱狀圖 | Line and Clustered Column | `v_campaign_daily_ctr_cvr` | X=`date`，柱=`clicks`，線1=`ctr`，線2=`session_cvr` |
-| CTR Bucket 折線柱狀圖 | Line and Clustered Column | `v_ctr_bucket_analysis` | X=`ctr_bucket`，柱=`total_revenue_usd`，線=`avg_session_cvr` |
+| CTR × CVR 散点图 | Scatter Chart | `v_campaign_ctr_cvr_scatter` | X=`avg_ctr`，Y=`avg_session_cvr`，Size=`total_orders`，Color=`channel` |
+| Campaign 详细表格 | Table | `v_campaign_ctr_cvr_scatter` | `campaign_name`、`channel`、`campaign_type`、`avg_ctr`、`avg_session_cvr`、`total_orders`、`total_revenue_usd` |
+| 每日 CTR & CVR 折线柱状图 | Line and Clustered Column | `v_campaign_daily_ctr_cvr` | X=`date`，柱=`clicks`，线1=`ctr`，线2=`session_cvr` |
+| CTR Bucket 折线柱状图 | Line and Clustered Column | `v_ctr_bucket_analysis` | X=`ctr_bucket`，柱=`total_revenue_usd`，线=`avg_session_cvr` |
 
 **Slicers**：`channel`、`campaign_type`
 
@@ -217,21 +216,20 @@ VAR avgCVR = AVERAGE(v_campaign_ctr_cvr_scatter[avg_session_cvr]) * 100
 RETURN "Avg CTR: " & FORMAT(avgCTR, "0.00") & "% | Avg CVR: " & FORMAT(avgCVR, "0.00") & "%"
 ```
 
-
 ---
 
-### Page 3 — ROI Analysis（廣告投資報酬分析）
+### Page 3 — ROI Analysis（广告投资报酬分析）
 
-**目標**：找出最高效的廣告活動
+**目标**：找出最高效的广告活动
 
-| 區塊 | 視覺化類型 | 資料來源 | 欄位 |
+| 区块 | 可视化类型 | 数据源 | 字段 |
 |------|-----------|---------|------|
 | KPI Cards | Card × 4 | `v_campaign_roi` | DAX: Best ROAS Campaign、Avg ROI%、Total Revenue、Total Spend |
-| Campaign ROI 排名 | Horizontal Bar | `v_campaign_roi` | `campaign_name` vs `roi`（條件格式：負值紅色）|
-| ROAS vs Spend 散點圖 | Scatter | `v_campaign_roi` | X=`total_spend_usd`，Y=`roas`，Size=`total_orders`，Color=`channel` |
-| Campaign Type 比較矩陣 | Matrix | `v_campaign_type_roi` | Row=`channel`，Column=`campaign_type`，Values=`avg_roas`、`avg_cpa_usd` |
-| 月度 ROI 趨勢 | Line Chart | `v_monthly_roi_trend` | X=`year_month`，Y=`roi`，Legend=`channel` |
-| CPA 比較 | Bar Chart | `v_campaign_roi` | `campaign_name` vs `cost_per_acquisition`（由低至高排序）|
+| Campaign ROI 排名 | Horizontal Bar | `v_campaign_roi` | `campaign_name` vs `roi`（条件格式：负值红色）|
+| ROAS vs Spend 散点图 | Scatter | `v_campaign_roi` | X=`total_spend_usd`，Y=`roas`，Size=`total_orders`，Color=`channel` |
+| Campaign Type 比较矩阵 | Matrix | `v_campaign_type_roi` | Row=`channel`，Column=`campaign_type`，Values=`avg_roas`、`avg_cpa_usd` |
+| 月度 ROI 趋势 | Line Chart | `v_monthly_roi_trend` | X=`year_month`，Y=`roi`，Legend=`channel` |
+| CPA 比较 | Bar Chart | `v_campaign_roi` | `campaign_name` vs `cost_per_acquisition`（由低至高排序）|
 
 **Slicers**：`channel`、`campaign_type`
 
@@ -262,52 +260,52 @@ RETURN
     IF(r >= 0,   "🟡 Positive",
                  "🔴 Negative"))
 
-
 ```
 
 ---
 
-## 四、數值格式化設定
+## 四、数值格式化设定
 
-| 欄位類型 | 格式字串 | 範例 |
+| 字段类型 | 格式字符串 | 范例 |
 |---------|---------|------|
-| 金額（USD） | `$#,##0` | $1,118,727 |
-| 金額（小數）| `$#,##0.00` | $97.50 |
+| 金额（USD） | `$#,##0` | $1,118,727 |
+| 金额（小数）| `$#,##0.00` | $97.50 |
 | 百分比 | `0.00%` | 3.54% |
-| 倍數（ROAS）| `0.00"x"` | 45.12x |
-| 整數計數 | `#,##0` | 18,288 |
+| 倍数（ROAS）| `0.00"x"` | 45.12x |
+| 整数计数 | `#,##0` | 18,288 |
 | 日期（月） | `MMM YYYY` | Jan 2024 |
 
 ---
 
-## 五、設計規範
+## 五、设计规范
 
 ### 渠道色彩方案
 
-| 渠道 | 色碼 |
+| 渠道 | 色码 |
 |------|------|
 | Google Ads | `#4285F4` |
-| Facebook Ads | `#0D47A1`（深藍，避免與 Google 混淆）|
+| Facebook Ads | `#0D47A1`（深蓝，避免与 Google 混淆）|
 | Email | `#FF6D00` |
 | Organic | `#2E7D32` |
 | Direct | `#6A1B9A` |
 
-### 全域設定
+### 全局设定
 
-- 背景色：`#F8F9FA`（淺灰白）
-- 主標題字型：Segoe UI Semibold 18px
-- 數值字型：Segoe UI 14px
-- KPI Card：大數字 + 副標題說明文字
-- 所有金額：USD `$` 格式，千分位分隔符
+- 背景色：`#F8F9FA`（浅灰白）
+- 主标题字型：Segoe UI Semibold 18px
+- 数值字型：Segoe UI 14px
+- KPI Card：大数字 + 副标题说明文字
+- 所有金额：USD `$` 格式，千分位分隔符
 - 所有百分比：`0.00%` 格式
 
-### 條件格式化規則
+### 条件格式化规则
 
-| 條件 | 格式 |
+| 条件 | 格式 |
 |------|------|
-| `roi < 0` | 紅色背景 |
-| `roi` 介於 0–1 | 黃色背景 |
-| `roi > 1` | 綠色背景 |
-| `roas < 1` | 紅色字體 |
-| `cost_per_acquisition` 最高值 | 紅色標記 |
-| `cost_per_acquisition` 最低值 | 綠色標記 |
+| `roi < 0` | 红色背景 |
+| `roi` 介于 0–1 | 黄色背景 |
+| `roi > 1` | 绿色背景 |
+| `roas < 1` | 红色字体 |
+| `cost_per_acquisition` 最高值 | 红色标记 |
+| `cost_per_acquisition` 最低值 | 绿色标记 |
+
