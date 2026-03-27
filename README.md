@@ -62,7 +62,7 @@ campaigns (12 rows)          ← 廣告活動主檔（C001–C012）
 | `02_traffic_analysis.sql` | `v_channel_performance`、`v_monthly_channel_trend`、`v_device_channel_conversion` | 各渠道整體表現、月度趨勢、裝置轉換分布 |
 | `03_ctr_conversion.sql` | `v_campaign_daily_ctr_cvr`、`v_ctr_bucket_analysis`、`v_campaign_ctr_cvr_scatter` | CTR vs CVR 日級別、分桶分析、散點圖資料 |
 | `04_roi_analysis.sql` | `v_campaign_roi`、`v_monthly_roi_trend`、`v_campaign_type_roi` | Campaign ROI 排名、月度 ROI 趨勢、Campaign Type 比較 |
-| `05_dim_channel.sql` | `dim_channel_mapping`、`dim_channel`、`dim_campaign_type` | 渠道 & Campaign Type 維度表（含排序） |
+| `05_dim_channel.sql` | `dim_channel_mapping`、`dim_channel`、`dim_campaign_type_mapping`、`dim_campaign_type` | 渠道 & Campaign Type 維度表（含排序） |
 
 ---
 
