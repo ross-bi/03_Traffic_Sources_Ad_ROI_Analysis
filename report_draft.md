@@ -164,4 +164,3 @@ Google Ads 在 Desktop 與 Mobile 之間幾乎均等分布（5,316 vs 5,258）�
 
 ***
 
-*數據來源：BigQuery cache（`traffic_ad_roi_clean` dataset）；2024 全年模擬資料，各渠道參數參考 data_dictionary.md 中的 Simulation Parameters*
