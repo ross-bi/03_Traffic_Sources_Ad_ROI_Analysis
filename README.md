@@ -195,7 +195,7 @@ sql/05_dim_channel.sql        → Tables: dim_channel_mapping, dim_campaign_type
 
 ## 作者
 
-ross-bi | [GitHub](https://github.com/ross-bi)
+Ross Tang | [GitHub](https://github.com/ross-bi)
 
 ## License
 
