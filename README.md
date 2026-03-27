@@ -255,7 +255,8 @@ ORDER BY avg_ctr_pct;
 - **Campaign Type Matrix**: Automation > Newsletter > Promotion > Search > Shopping > Display
 - **Monthly ROI Trend**: Full-year ROI trend comparison across campaign types
 
-Dashboard PDF export: [`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)
+Dashboard PDF export: [`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)  
+See details [`powerbi/dashboard_design.md`](.powerbi/dashboard_design.md)
 
 ---
 

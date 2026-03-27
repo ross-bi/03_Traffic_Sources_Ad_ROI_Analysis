@@ -255,7 +255,8 @@ ORDER BY avg_ctr_pct;
 - **Campaign Type 矩陣**：Automation > Newsletter > Promotion > Search > Shopping > Display
 - **月度 ROI 趨勢**：各類型 Campaign ROI 全年走勢對比
 
-Dashboard PDF 匯出：[`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)
+Dashboard PDF 匯出：[`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)  
+詳細說明見 [`powerbi/dashboard_design.zh-TW.md`](.powerbi/dashboard_design.zh-TW.md)
 
 ---
 
@@ -362,7 +363,7 @@ Dashboard PDF 匯出：[`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)
 | Organic | N/A | 3.0% | $85 |
 | Direct | N/A | 4.5% | $110 |
 
-> 資料以 `random.seed(42)` 固定，結果可完全重現。詳細欄位說明見 [`docs/data_dictionary.md`](./docs/data_dictionary.md)。
+> 資料以 `random.seed(42)` 固定，結果可完全重現。詳細欄位說明見 [`docs/data_dictionary.zh-TW.md`](./docs/data_dictionary.zh-TW.md)。
 
 ---
 
