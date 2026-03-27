@@ -255,7 +255,7 @@ ORDER BY avg_ctr_pct;
 - **月度 ROI 趋势**：各类型 Campaign ROI 全年走势对比
 
 Dashboard PDF 汇出：[`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)  
-详细说明见 [`powerbi/dashboard_design.zh-CN.md`](.powerbi/dashboard_design.zh-CN.md)
+详细说明见: [`powerbi/dashboard_design.zh-CN.md`](./powerbi/dashboard_design.zh-CN.md)
 
 
 
