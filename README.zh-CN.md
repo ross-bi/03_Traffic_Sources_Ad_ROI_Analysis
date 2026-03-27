@@ -1,3 +1,7 @@
+[![English](https://img.shields.io/badge/English-Click_Here-blue?style=for-the-badge)](README.md)
+&nbsp;&nbsp;
+[![繁體中文](https://img.shields.io/badge/繁體中文-點擊查看-blue?style=for-the-badge)](README.zh-TW.md)
+
 # 流量来源与广告 ROI 分析
 
 **Python · Google BigQuery · SQL · Power BI**
