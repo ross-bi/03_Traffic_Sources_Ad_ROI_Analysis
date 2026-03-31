@@ -53,5 +53,4 @@ key*.json
 **/.pbi/cache.abf
 
 # Power BI binaries / temp
-*.pbix
 *.tmp
