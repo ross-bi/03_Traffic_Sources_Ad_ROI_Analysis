@@ -1,0 +1,13 @@
+campaign_id,campaign_name,channel,campaign_type,daily_budget,start_date,end_date
+C001,Google_Brand_Search,Google Ads,Search,500,2024-01-01,2024-12-31
+C002,Google_NonBrand_Search,Google Ads,Search,800,2024-01-01,2024-12-31
+C003,Google_Shopping_Q1,Google Ads,Shopping,600,2024-01-01,2024-03-31
+C004,Google_Display_Remarketing,Google Ads,Display,300,2024-03-01,2024-12-31
+C005,Facebook_Awareness,Facebook Ads,Awareness,400,2024-01-01,2024-06-30
+C006,Facebook_Conversion,Facebook Ads,Conversion,700,2024-01-01,2024-12-31
+C007,Facebook_Retargeting,Facebook Ads,Retargeting,350,2024-04-01,2024-12-31
+C008,Email_Newsletter_Monthly,Email,Newsletter,50,2024-01-01,2024-12-31
+C009,Email_Promo_Flash_Sale,Email,Promotion,80,2024-02-01,2024-11-30
+C010,Email_Abandoned_Cart,Email,Automation,30,2024-01-01,2024-12-31
+C011,Organic_SEO,Organic,SEO,0,2024-01-01,2024-12-31
+C012,Direct_Traffic,Direct,Direct,0,2024-01-01,2024-12-31
