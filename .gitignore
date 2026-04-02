@@ -36,7 +36,6 @@ dist/
 *.egg-info/
 
 # Local generated data
-data/*.csv
 data/*.parquet
 data/*.xlsx
 !data/.gitkeep
