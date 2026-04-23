@@ -38,7 +38,7 @@
 | 主要欄位 | campaign_id、channel、campaign_type、daily_budget、impressions、clicks、CTR、spend_usd、session_id、device、country、order_value_usd |
 
 ---
-### 為什麼使用模擬數據？
+## 為什麼使用模擬數據？
 
 真實的廣告投放數據——包括投放費用、曝光次數、點擊與轉化事件——在大多數企業中屬於高度商業機密，受到嚴格的保密限制。目前公開可用的廣告數據集，要麼經過高度彙總（缺乏 session 或轉化的行級明細）、要麼受平台限制（需要 Facebook Ads Manager 或 Google Ads API 存取權限），要麼僅涵蓋單一渠道，無法支援跨渠道比較分析。
 
