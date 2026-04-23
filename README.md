@@ -38,7 +38,7 @@ The goal is to provide data-driven support for **channel budget allocation, camp
 
 ---
 
-### Why Simulated Data?
+## Why Simulated Data?
 
 Real advertising performance data — including campaign spend, impressions, clicks, and conversion events — is commercially sensitive and subject to strict confidentiality at most organisations. Publicly available ad datasets are either heavily aggregated (no session or conversion row-level detail), platform-restricted (Facebook Ads Manager, Google Ads API access), or limited to a single channel without cross-channel comparability.
 
