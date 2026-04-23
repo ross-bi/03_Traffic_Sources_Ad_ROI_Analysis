@@ -26,6 +26,18 @@
 
 ---
 
+
+## 資料集
+
+| 項目 | 說明 |
+|---|---|
+| 來源 | Python 模擬生成（`random.seed(42)`，結果可完全重現） |
+| 資料筆數 | campaigns: 12 rows / ad_impressions: 3,720 rows / sessions: 511,797 rows / conversions: 18,288 rows |
+| 時間範圍 | 2024 年全年（2024-01-01 至 2024-12-31） |
+| 涵蓋渠道 | Google Ads、Facebook Ads、Email、Organic、Direct（共 12 支 Campaign） |
+| 主要欄位 | campaign_id、channel、campaign_type、daily_budget、impressions、clicks、CTR、spend_usd、session_id、device、country、order_value_usd |
+
+---
 ### 為什麼使用模擬數據？
 
 真實的廣告投放數據——包括投放費用、曝光次數、點擊與轉化事件——在大多數企業中屬於高度商業機密，受到嚴格的保密限制。目前公開可用的廣告數據集，要麼經過高度彙總（缺乏 session 或轉化的行級明細）、要麼受平台限制（需要 Facebook Ads Manager 或 Google Ads API 存取權限），要麼僅涵蓋單一渠道，無法支援跨渠道比較分析。
@@ -38,17 +50,7 @@
 - **跨渠道可比性**：在五個渠道（Google Ads、Facebook Ads、Email、Organic、Direct）中以一致的 Schema 構建數據，使跨渠道 ROI 比較分析成為可能；而這種分析在真實的碎片化數據源中極難完整實現。
 
 > **說明：** 所有模擬參數（CTR、CVR、訂單金額、Q4 季節性係數）已記錄於 [模擬參數](#simulation-parameters) 一節，並完整收錄於 [`docs/data_dictionary.md`](./docs/data_dictionary.md)。所有分析結論均在本模擬情境的框架內作出解讀。
----
 
-## 資料集
-
-| 項目 | 說明 |
-|---|---|
-| 來源 | Python 模擬生成（`random.seed(42)`，結果可完全重現） |
-| 資料筆數 | campaigns: 12 rows / ad_impressions: 3,720 rows / sessions: 511,797 rows / conversions: 18,288 rows |
-| 時間範圍 | 2024 年全年（2024-01-01 至 2024-12-31） |
-| 涵蓋渠道 | Google Ads、Facebook Ads、Email、Organic、Direct（共 12 支 Campaign） |
-| 主要欄位 | campaign_id、channel、campaign_type、daily_budget、impressions、clicks、CTR、spend_usd、session_id、device、country、order_value_usd |
 
 ---
 
