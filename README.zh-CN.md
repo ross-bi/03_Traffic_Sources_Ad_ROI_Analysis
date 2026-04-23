@@ -35,7 +35,7 @@
 | 主要字段 | campaign_id、channel、campaign_type、daily_budget、impressions、clicks、CTR、spend_usd、session_id、device、country、order_value_usd |
 
 ---
-### 为什么使用模拟数据？
+## 为什么使用模拟数据？
 
 真实的广告投放数据——包括投放费用、曝光次数、点击与转化事件——在大多数企业中属于高度商业机密，受到严格的保密限制。目前公开可用的广告数据集，要么经过高度汇总（缺乏 session 或转化的行级明细）、要么受平台限制（需要 Facebook Ads Manager 或 Google Ads API 访问权限），要么仅覆盖单一渠道，无法支持跨渠道比较分析。
 
