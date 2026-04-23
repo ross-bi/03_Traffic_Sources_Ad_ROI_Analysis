@@ -24,7 +24,17 @@
 - 业务洞察与可行建议
 
 ---
+## 数据集
 
+| 项目 | 说明 |
+|---|---|
+| 来源 | Python 模拟生成（`random.seed(42)`，结果可完全重现） |
+| 资料笔数 | campaigns: 12 rows / ad_impressions: 3,720 rows / sessions: 511,797 rows / conversions: 18,288 rows |
+| 时间范围 | 2024 年全年（2024-01-01 至 2024-12-31） |
+| 涵盖渠道 | Google Ads、Facebook Ads、Email、Organic、Direct（共 12 支 Campaign） |
+| 主要字段 | campaign_id、channel、campaign_type、daily_budget、impressions、clicks、CTR、spend_usd、session_id、device、country、order_value_usd |
+
+---
 ### 为什么使用模拟数据？
 
 真实的广告投放数据——包括投放费用、曝光次数、点击与转化事件——在大多数企业中属于高度商业机密，受到严格的保密限制。目前公开可用的广告数据集，要么经过高度汇总（缺乏 session 或转化的行级明细）、要么受平台限制（需要 Facebook Ads Manager 或 Google Ads API 访问权限），要么仅覆盖单一渠道，无法支持跨渠道比较分析。
@@ -39,17 +49,6 @@
 > **说明：** 所有模拟参数（CTR、CVR、订单金额、Q4 季节性系数）已记录于 [模拟参数](#simulation-parameters) 一节，并完整收录于 [`docs/data_dictionary.md`](./docs/data_dictionary.md)。所有分析结论均在本模拟情境的框架内作出解读。
 ---
 
-## 数据集
-
-| 项目 | 说明 |
-|---|---|
-| 来源 | Python 模拟生成（`random.seed(42)`，结果可完全重现） |
-| 资料笔数 | campaigns: 12 rows / ad_impressions: 3,720 rows / sessions: 511,797 rows / conversions: 18,288 rows |
-| 时间范围 | 2024 年全年（2024-01-01 至 2024-12-31） |
-| 涵盖渠道 | Google Ads、Facebook Ads、Email、Organic、Direct（共 12 支 Campaign） |
-| 主要字段 | campaign_id、channel、campaign_type、daily_budget、impressions、clicks、CTR、spend_usd、session_id、device、country、order_value_usd |
-
----
 
 ## 工具与技术
 
