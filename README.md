@@ -26,6 +26,18 @@ The goal is to provide data-driven support for **channel budget allocation, camp
 
 ---
 
+## Dataset
+
+| Item | Description |
+|---|---|
+| Source | Python simulated data (`random.seed(42)` — fully reproducible) |
+| Row Counts | campaigns: 12 rows / ad_impressions: 3,720 rows / sessions: 511,797 rows / conversions: 18,288 rows |
+| Time Range | Full year 2024 (2024-01-01 to 2024-12-31) |
+| Channels | Google Ads, Facebook Ads, Email, Organic, Direct (12 campaigns total) |
+| Key Fields | campaign_id, channel, campaign_type, daily_budget, impressions, clicks, CTR, spend_usd, session_id, device, country, order_value_usd |
+
+---
+
 ### Why Simulated Data?
 
 Real advertising performance data — including campaign spend, impressions, clicks, and conversion events — is commercially sensitive and subject to strict confidentiality at most organisations. Publicly available ad datasets are either heavily aggregated (no session or conversion row-level detail), platform-restricted (Facebook Ads Manager, Google Ads API access), or limited to a single channel without cross-channel comparability.
@@ -38,17 +50,7 @@ This project uses Python-generated simulated data for the following reasons:
 - **Cross-channel comparability**: Constructing data across five channels (Google Ads, Facebook Ads, Email, Organic, Direct) with consistent schemas enables cross-channel ROI analysis that would be extremely difficult to assemble from real fragmented data sources.
 
 > **Note:** The simulation parameters (CTR, CVR, order values, Q4 seasonality multiplier) are documented in the [Simulation Parameters](#simulation-parameters) section and fully specified in [`docs/data_dictionary.md`](./docs/data_dictionary.md). All analytical findings are interpreted in the context of the simulated scenario.
----
 
-## Dataset
-
-| Item | Description |
-|---|---|
-| Source | Python simulated data (`random.seed(42)` — fully reproducible) |
-| Row Counts | campaigns: 12 rows / ad_impressions: 3,720 rows / sessions: 511,797 rows / conversions: 18,288 rows |
-| Time Range | Full year 2024 (2024-01-01 to 2024-12-31) |
-| Channels | Google Ads, Facebook Ads, Email, Organic, Direct (12 campaigns total) |
-| Key Fields | campaign_id, channel, campaign_type, daily_budget, impressions, clicks, CTR, spend_usd, session_id, device, country, order_value_usd |
 
 ---
 
