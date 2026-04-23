@@ -26,6 +26,20 @@ The goal is to provide data-driven support for **channel budget allocation, camp
 
 ---
 
+### Why Simulated Data?
+
+Real advertising performance data — including campaign spend, impressions, clicks, and conversion events — is commercially sensitive and subject to strict confidentiality at most organisations. Publicly available ad datasets are either heavily aggregated (no session or conversion row-level detail), platform-restricted (Facebook Ads Manager, Google Ads API access), or limited to a single channel without cross-channel comparability.
+
+This project uses Python-generated simulated data for the following reasons:
+
+- **Full pipeline control**: Simulating data allows the project to cover the complete analytics workflow end-to-end — from raw event generation through ETL, data modelling, SQL Views, and dashboarding — without being constrained by what a public dataset happens to expose.
+- **Realistic business scenario**: Baseline parameters (CTR, CVR, average order value, seasonality) are grounded in published digital marketing benchmarks (e.g. Google Ads industry averages: CTR 4–6%; Email marketing CVR 3–6%; Q4 seasonal lift: +20–30%). The simulated patterns closely reflect real-world behaviour, including Email's low-spend / high-ROAS profile and Display's typically high CPA.
+- **Reproducibility and auditability**: Using `random.seed(42)` ensures that every analyst can regenerate the exact same dataset and validate all SQL outputs, which is a requirement for portfolio work reviewed by technical hiring managers.
+- **Cross-channel comparability**: Constructing data across five channels (Google Ads, Facebook Ads, Email, Organic, Direct) with consistent schemas enables cross-channel ROI analysis that would be extremely difficult to assemble from real fragmented data sources.
+
+> **Note:** The simulation parameters (CTR, CVR, order values, Q4 seasonality multiplier) are documented in the [Simulation Parameters](#simulation-parameters) section and fully specified in [`docs/data_dictionary.md`](./docs/data_dictionary.md). All analytical findings are interpreted in the context of the simulated scenario.
+---
+
 ## Dataset
 
 | Item | Description |
