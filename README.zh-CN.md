@@ -46,7 +46,7 @@
 - **可重现性与可审计性**：使用 `random.seed(42)` 确保任何分析人员均可重新生成完全相同的数据集，并验证所有 SQL 输出结果——这是供技术面试官审阅的 Portfolio 项目所必须具备的条件。
 - **跨渠道可比性**：在五个渠道（Google Ads、Facebook Ads、Email、Organic、Direct）中以一致的 Schema 构建数据，使跨渠道 ROI 比较分析成为可能；而这种分析在真实的碎片化数据源中极难完整实现。
 
-> **说明：** 所有模拟参数（CTR、CVR、订单金额、Q4 季节性系数）已记录于 [模拟参数](#模拟参数) 一节，并完整收录于 [`docs/data_dictionary.md`](./docs/data_dictionary.md)。所有分析结论均在本模拟情境的框架内作出解读。
+> **说明：** 所有模拟参数（CTR、CVR、订单金额、Q4 季节性系数）已记录于 [模拟参数](#数据仿真参数) 一节，并完整收录于 [`docs/data_dictionary.md`](./docs/data_dictionary.md)。所有分析结论均在本模拟情境的框架内作出解读。
 ---
 
 
