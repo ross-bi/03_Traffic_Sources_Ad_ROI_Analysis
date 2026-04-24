@@ -247,6 +247,140 @@ ORDER BY avg_ctr_pct;
 
 ## 4. Power BI Dashboard (3 Pages)
 
+### Power BI Data Model
+```mermaid
+erDiagram
+
+    dim_channel {
+        string channel PK
+        int sort_order
+    }
+
+    dim_campaign_type {
+        string campaign_type PK
+        int sort_order
+    }
+
+    v_channel_performance {
+        string channel FK
+        string campaign_type FK
+        int total_sessions
+        int total_orders
+        float total_revenue_usd
+        float total_spend_usd
+        float conversion_rate
+        float cost_per_acquisition
+        float roas
+    }
+
+    v_monthly_channel_trend {
+        string year_month
+        string channel FK
+        int orders
+        float revenue_usd
+    }
+
+    v_device_channel_conversion {
+        string channel FK
+        string device
+        int orders
+        float revenue_usd
+    }
+
+    v_campaign_daily_ctr_cvr {
+        string campaign_id
+        string campaign_name
+        string channel FK
+        string campaign_type FK
+        date date
+        float ctr
+        float session_cvr
+        int orders
+        float revenue_usd
+    }
+
+    v_ctr_bucket_analysis {
+        string channel FK
+        string campaign_type FK
+        string ctr_bucket
+        float avg_ctr
+        float avg_session_cvr
+        int total_orders
+        float total_revenue_usd
+    }
+
+    v_campaign_ctr_cvr_scatter {
+        string campaign_id PK
+        string campaign_name
+        string channel FK
+        string campaign_type FK
+        float avg_ctr
+        float avg_session_cvr
+        int total_orders
+        float total_revenue_usd
+        float total_spend_usd
+    }
+
+    v_campaign_roi {
+        string campaign_id PK
+        string campaign_name
+        string channel FK
+        string campaign_type FK
+        float total_spend_usd
+        float total_revenue_usd
+        int total_orders
+        float ctr
+        float session_cvr
+        float roas
+        float roi
+        float cost_per_acquisition
+        float cpm_usd
+        float cpc_usd
+    }
+
+    v_monthly_roi_trend {
+        string year_month
+        string channel FK
+        string campaign_type FK
+        float spend_usd
+        float revenue_usd
+        float roas
+        float roi
+    }
+
+    v_campaign_type_roi {
+        string channel FK
+        string campaign_type FK
+        int campaign_count
+        float total_spend_usd
+        float total_revenue_usd
+        float avg_ctr
+        float avg_cvr
+        float avg_roas
+        float avg_roi
+        float avg_cpa_usd
+    }
+
+    dim_channel ||--o{ v_channel_performance : "channel"
+    dim_channel ||--o{ v_monthly_channel_trend : "channel"
+    dim_channel ||--o{ v_device_channel_conversion : "channel"
+    dim_channel ||--o{ v_campaign_daily_ctr_cvr : "channel"
+    dim_channel ||--o{ v_ctr_bucket_analysis : "channel"
+    dim_channel ||--o{ v_campaign_ctr_cvr_scatter : "channel"
+    dim_channel ||--o{ v_campaign_roi : "channel"
+    dim_channel ||--o{ v_monthly_roi_trend : "channel"
+    dim_channel ||--o{ v_campaign_type_roi : "channel"
+
+    dim_campaign_type ||--o{ v_channel_performance : "campaign_type"
+    dim_campaign_type ||--o{ v_campaign_daily_ctr_cvr : "campaign_type"
+    dim_campaign_type ||--o{ v_ctr_bucket_analysis : "campaign_type"
+    dim_campaign_type ||--o{ v_campaign_ctr_cvr_scatter : "campaign_type"
+    dim_campaign_type ||--o{ v_campaign_roi : "campaign_type"
+    dim_campaign_type ||--o{ v_monthly_roi_trend : "campaign_type"
+    dim_campaign_type ||--o{ v_campaign_type_roi : "campaign_type"
+```
+
+
 ### Page 1: Channel Overview
 <img src="powerbi/screenshots/dashboard1.png" alt="Channel Overview Dashboard" width="100%">
 
