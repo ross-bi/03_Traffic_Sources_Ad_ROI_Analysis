@@ -1,5 +1,0 @@
-campaign_name,campaign_type,order_value_tier,orders,tier_pct,avg_order_value_usd
-Facebook_Conversion,Conversion,Mid Value,511,35.14,120.76
-Facebook_Conversion,Conversion,Low Value,943,64.86,70.9
-Facebook_Retargeting,Retargeting,Mid Value,396,35.8,120.65
-Facebook_Retargeting,Retargeting,Low Value,710,64.2,70.8
