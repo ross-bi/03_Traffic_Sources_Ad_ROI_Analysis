@@ -6,7 +6,7 @@
 
 ## 執行摘要
 
-本分析橫跨五大流量渠道（Google Ads、Facebook Ads、Email、Organic、Direct），覆蓋全年超過 511,797 個 Sessions 及 18,288 筆訂單，總收益達 **$1,754,573 USD**。核心結論：**Email 渠道以極低投放成本取得全年最高 ROI（平均 ROAS 30.8x）；Google Ads 是訂單量主力，佔比逾 64%；Google Display Remarketing（C004）是唯一錄得負 ROI 的廣告活動，需立即檢討預算分配。**
+本分析橫跨五大流量渠道（Google Ads、Facebook Ads、Email、Organic、Direct），覆蓋全年超過 511,797 個 Sessions 及 18,288 筆訂單，總收益達 **$1,754,574 USD**。核心結論：**Email 渠道以極低投放成本取得全年最高 ROI（平均 ROAS 30.8x）；Google Ads 是訂單量主力，佔比逾 64%；Google Display Remarketing（C004）是唯一錄得負 ROI 的廣告活動，需立即檢討預算分配。**
 
 ***
 
