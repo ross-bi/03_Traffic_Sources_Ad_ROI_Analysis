@@ -1,0 +1,16 @@
+channel,device,sessions,orders,cvr_pct,avg_order_value
+Direct,Tablet,2901,203,7.0,105.34
+Direct,Desktop,12930,881,6.81,108.78
+Direct,Mobile,13144,895,6.81,109.84
+Email,Tablet,1629,129,7.92,102.78
+Email,Mobile,7322,546,7.46,103.07
+Email,Desktop,7399,540,7.3,104.36
+Facebook Ads,Mobile,47476,1286,2.71,88.97
+Facebook Ads,Tablet,10667,278,2.61,89.0
+Facebook Ads,Desktop,47284,1233,2.61,87.19
+Google Ads,Desktop,149112,5316,3.57,95.64
+Google Ads,Mobile,149616,5258,3.51,95.07
+Google Ads,Tablet,33021,1158,3.51,95.37
+Organic,Desktop,13169,266,2.02,82.61
+Organic,Mobile,13247,250,1.89,86.47
+Organic,Tablet,2880,49,1.7,85.52
