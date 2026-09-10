@@ -521,7 +521,7 @@ When filtered to the Email channel, the CTR 3–4% bucket yields the highest CVR
 
 ## Author
 
-Ross Tang | [GitHub](https://github.com/ross-bi)
+Chung Man Tang | [GitHub](https://github.com/ross-bi)
 
 ## License
 

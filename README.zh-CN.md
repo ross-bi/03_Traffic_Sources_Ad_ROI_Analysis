@@ -515,7 +515,7 @@ Dashboard PDF 汇出：[`powerbi/dashboard.pdf`](./powerbi/dashboard.pdf)
 
 ## 作者
 
-Ross Tang | [GitHub](https://github.com/ross-bi)
+Chung Man Tang | [GitHub](https://github.com/ross-bi)
 
 ## 授权条款
 
